@@ -12,28 +12,75 @@ namespace Calculadora
 {
     public partial class Form1 : Form
     {
+        private double numero1;
+        private double numero2;
+        private string operacao;
+        private double resultado;
+        private Boolean PressionouIgual;
+
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();//metodo especial, onde ele começa a construir
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void LimparCampos()
         {
-
+            numero1 = 0;
+            numero1 = 0;
+            operacao = String.Empty;
+            resultado = 0;
+            PressionouIgual = false;
+            txtDisplay.Clear();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Calcular() //método
         {
-            if (!txtDisplay.Text.Trim().Equals("0")) //trim=limpar os espaços entre os números | ! = "not"
+            switch(operacao)
             {
-                txtDisplay.Text = txtDisplay.Text + "0";
+                case "/":
+                    if (numero2 == 0)
+                    {
+                        MessageBox.Show("Impossível divisão por zero!","Aviso do sistema",MessageBoxButtons.OK);
+                        break;
+                    }
+                    resultado = numero1 / numero2;
+                    break;
+                case "+":
+                    resultado = numero1 + numero2;
+                    break;
+                case "-":
+                    resultado = numero1 - numero2;
+                    break;
+                case "*":
+                    resultado = numero1 * numero2;
+                    break;
+            }
+            txtDisplay.Text = resultado.ToString();
+        }
+
+        private void adicionarOperacao(string caractere)
+        {
+            if (!txtDisplay.Text.Trim().Equals(String.Empty))
+            {
+                numero1 = Convert.ToDouble(txtDisplay.Text.Trim());
+                txtDisplay.Clear(); //limpar display da calculadora
+                operacao = caractere;
+            }
+        }
+
+        void adicionarDigito(string digito)
+        {
+            if (txtDisplay.Text.Trim().Equals("0"))
+            {
+                txtDisplay.Text = digito;
             }
             else
             {
-                txtDisplay.Text = "0";
+                txtDisplay.Text = txtDisplay.Text + digito;
             }
+        }
 
-            /*private void button3_Click(object sender, EventArgs e)
+            private void button3_Click(object sender, EventArgs e)
             {
 
             }
@@ -41,7 +88,117 @@ namespace Calculadora
             private void textBox1_TextChanged(object sender, EventArgs e)
             {
 
-            }*/
+            }
+            
+            private void btnUm_Click(object sender, EventArgs e)
+            {
+                adicionarDigito("1");
+            }
+
+            private void btnDois_Click(object sender, EventArgs e)
+            {
+                adicionarDigito("2");
+            }
+
+            private void btnTres_Click(object sender, EventArgs e)
+            {
+                adicionarDigito("3");
+            }
+
+            private void btnQuatro_Click(object sender, EventArgs e)
+            {
+                adicionarDigito("4");
+            }
+
+            private void btnCinco_Click(object sender, EventArgs e)
+            {
+                adicionarDigito("5");
+            }
+
+            private void btnSeis_Click(object sender, EventArgs e)
+            {
+                adicionarDigito("6");
+            }
+
+            private void btnSete_Click(object sender, EventArgs e)
+            {
+                adicionarDigito("7");
+            }
+
+            private void btnOito_Click(object sender, EventArgs e)
+            {
+                adicionarDigito("8");
+            }
+
+            private void btnNove_Click(object sender, EventArgs e)
+            {
+                adicionarDigito("9");
+            }
+
+            private void Form1_Load(object sender, EventArgs e)
+            {
+                LimparCampos();
+            }
+
+            private void btnIgual_Click(object sender, EventArgs e)
+            {
+                if (!txtDisplay.Text.Trim().Equals(String.Empty)) ;
+                {
+                    numero2 = Convert.ToDouble(txtDisplay.Text.Trim());
+                    Calcular(); //chama método calcular (que foi criado agora)
+                    PressionouIgual = true;
+                }
+
+            }
+
+        private void btnSoma_Click(object sender, EventArgs e)
+        {
+            adicionarOperacao("+");
+        }
+
+        private void btnSubtracao_Click(object sender, EventArgs e)
+        {
+            adicionarOperacao("-");
+        }
+
+        private void btnMultiplica_Click(object sender, EventArgs e)
+        {
+            adicionarOperacao("*");
+        }
+
+        private void btnDivide_Click(object sender, EventArgs e)
+        {
+            adicionarOperacao("/"); //método
+        }
+
+        private void bntPonto_Click(object sender, EventArgs e)
+        {
+            if(PressionouIgual)
+            {
+                LimparCampos();
+            }
+            if (txtDisplay.Text.Trim().Equals(String.Empty))
+            {
+                txtDisplay.Text += "0";
+            }
+            if (txtDisplay.Text.Trim().Contains(",")) return;     //se ja tem um numero
+            txtDisplay.Text += ","; // mesma coisa que -> txtDisplay.Text = txtDisplay.Text + (",") | se ele encontrar uma virgula ele volta, do contrario ele faz
+
+        }
+
+        private void btnEleva_Click(object sender, EventArgs e)
+        {
+            if (!txtDisplay.Text.Trim().Equals(String.Empty))
+            {
+                numero1 = Convert.ToDouble(txtDisplay.Text.Trim());
+                resultado = numero1 * numero1;
+                txtDisplay.Text = resultado.ToString();
+            }
+
+                //resultado = Math.Pow(numero1, numero2);
+
+
+         }
         }
     }
 }
