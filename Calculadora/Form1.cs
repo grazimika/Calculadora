@@ -191,14 +191,19 @@ namespace Calculadora
             if (!txtDisplay.Text.Trim().Equals(String.Empty))
             {
                 numero1 = Convert.ToDouble(txtDisplay.Text.Trim());
-                resultado = numero1 * numero1;
+                resultado = Math.Pow(numero1, 2);
+                //resultado = numero1 * numero1;
                 txtDisplay.Text = resultado.ToString();
             }
-
-                //resultado = Math.Pow(numero1, numero2);
-
-
          }
+        private void btnInversao_Click(object sender, EventArgs e)
+        {
+            if (!txtDisplay.Text.Trim().Equals(String.Empty))
+            {
+                numero1 = Convert.ToDouble(txtDisplay.Text.Trim()); //PQ TEM QUE CONVERTER PARA DOUBLE?
+                resultado = (-1) * numero1 ;
+                txtDisplay.Text = resultado.ToString(); //PQ TEM QUE PASSAR PARA STRING?
+            }
         }
     }
 }

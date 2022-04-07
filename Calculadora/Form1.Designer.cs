@@ -245,6 +245,7 @@ namespace Calculadora
             this.btnInversao.TabIndex = 10;
             this.btnInversao.Text = "+/-";
             this.btnInversao.UseVisualStyleBackColor = true;
+            this.btnInversao.Click += new System.EventHandler(this.btnInversao_Click);
             // 
             // btnC
             // 
