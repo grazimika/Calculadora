@@ -257,6 +257,7 @@ namespace Calculadora
             this.btnC.TabIndex = 7;
             this.btnC.Text = "C";
             this.btnC.UseVisualStyleBackColor = true;
+            this.btnC.Click += new System.EventHandler(this.btnC_Click);
             // 
             // btnBackspace
             // 
@@ -314,6 +315,7 @@ namespace Calculadora
             this.btnPower.TabIndex = 0;
             this.btnPower.Text = "x^y";
             this.btnPower.UseVisualStyleBackColor = true;
+            this.btnPower.Click += new System.EventHandler(this.btnPower_Click);
             // 
             // btnFracao
             // 
@@ -336,6 +338,7 @@ namespace Calculadora
             this.btnSqrt.TabIndex = 0;
             this.btnSqrt.Text = "Sqrt(x)";
             this.btnSqrt.UseVisualStyleBackColor = true;
+            this.btnSqrt.Click += new System.EventHandler(this.btnSqrt_Click);
             // 
             // btnIgual
             // 

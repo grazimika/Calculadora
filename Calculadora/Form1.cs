@@ -54,6 +54,9 @@ namespace Calculadora
                 case "*":
                     resultado = numero1 * numero2;
                     break;
+                case "^y":
+                    resultado = Math.Pow(numero1, numero2);
+                    break;
             }
             txtDisplay.Text = resultado.ToString();
         }
@@ -202,6 +205,26 @@ namespace Calculadora
             {
                 numero1 = Convert.ToDouble(txtDisplay.Text.Trim()); //PQ TEM QUE CONVERTER PARA DOUBLE?
                 resultado = (-1) * numero1 ;
+                txtDisplay.Text = resultado.ToString(); //PQ TEM QUE PASSAR PARA STRING?
+            }
+        }
+
+        private void btnPower_Click(object sender, EventArgs e)
+        {
+            adicionarOperacao("^y");
+        }
+
+        private void btnC_Click(object sender, EventArgs e)
+        {
+            txtDisplay.Clear();
+        }
+
+        private void btnSqrt_Click(object sender, EventArgs e)
+        {
+            if (!txtDisplay.Text.Trim().Equals(String.Empty))
+            {
+                numero1 = Convert.ToDouble(txtDisplay.Text.Trim()); //PQ TEM QUE CONVERTER PARA DOUBLE?
+                resultado = Math.Sqrt(numero1);
                 txtDisplay.Text = resultado.ToString(); //PQ TEM QUE PASSAR PARA STRING?
             }
         }
