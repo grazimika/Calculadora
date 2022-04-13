@@ -54,6 +54,9 @@ namespace Calculadora
                 case "*":
                     resultado = numero1 * numero2;
                     break;
+                case "^y":
+                    resultado = Math.Pow(numero1, numero2);
+                    break;
             }
             txtDisplay.Text = resultado.ToString();
         }
@@ -87,10 +90,14 @@ namespace Calculadora
 
             private void textBox1_TextChanged(object sender, EventArgs e)
             {
-
+                
             }
-            
-            private void btnUm_Click(object sender, EventArgs e)
+            private void btnZero_Click(object sender, EventArgs e)
+            {
+            adicionarDigito("0");
+            }
+
+        private void btnUm_Click(object sender, EventArgs e)
             {
                 adicionarDigito("1");
             }
@@ -191,14 +198,63 @@ namespace Calculadora
             if (!txtDisplay.Text.Trim().Equals(String.Empty))
             {
                 numero1 = Convert.ToDouble(txtDisplay.Text.Trim());
-                resultado = numero1 * numero1;
+                resultado = Math.Pow(numero1, 2);
+                //resultado = numero1 * numero1;
+                txtDisplay.Text = resultado.ToString();
+            } 
+         }
+
+        private void btnInversao_Click(object sender, EventArgs e)
+        {
+            if (!txtDisplay.Text.Trim().Equals(String.Empty))
+            {
+                numero1 = Convert.ToDouble(txtDisplay.Text.Trim());
+                resultado = (-1) * (numero1);
                 txtDisplay.Text = resultado.ToString();
             }
-
-                //resultado = Math.Pow(numero1, numero2);
-
-
-         }
         }
+
+        private void btnC_Click(object sender, EventArgs e)
+        {
+            txtDisplay.Clear();
+        }
+
+        private void btnSqrt_Click(object sender, EventArgs e)
+        {
+            if (!txtDisplay.Text.Trim().Equals(String.Empty))
+            {
+                numero1 = Convert.ToDouble(txtDisplay.Text.Trim());
+                resultado = Math.Sqrt(numero1);
+                txtDisplay.Text = resultado.ToString();
+            }
+        }
+
+        private void btnPower_Click(object sender, EventArgs e)
+        {
+            adicionarOperacao("^y");
+        }
+
+        private void btnFracao_Click(object sender, EventArgs e)
+        {
+            if (!txtDisplay.Text.Trim().Equals(String.Empty))
+            {
+                numero1 = Convert.ToDouble(txtDisplay.Text.Trim());
+                resultado = 1 / numero1;
+                txtDisplay.Text = resultado.ToString();
+            }
+        }
+
+        private void btnBackspace_Click(object sender, EventArgs e)
+        {
+            if (txtDisplay.TextLength > 0)
+                txtDisplay.Text = txtDisplay.Text.Remove(txtDisplay.Text.Length-1,1);
+        }
+
+        private void btnCE_Click(object sender, EventArgs e)
+        {
+            txtDisplay.Clear();
+        }
+
+ 
     }
 }
